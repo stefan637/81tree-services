@@ -1150,6 +1150,43 @@ html,
         box-shadow: var(--shadow);
       }
 
+      #ghl-81tree .contact-showcase {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      #ghl-81tree .contact-showcase figure {
+        position: relative;
+        min-height: 280px;
+        overflow: hidden;
+        border-radius: var(--radius);
+        background: var(--dark);
+        box-shadow: 0 16px 36px rgba(16, 33, 22, 0.09);
+      }
+
+      #ghl-81tree .contact-showcase figure:first-child {
+        grid-row: span 2;
+      }
+
+      #ghl-81tree .contact-showcase img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.88;
+      }
+
+      #ghl-81tree .contact-showcase figcaption {
+        position: absolute;
+        right: 1rem;
+        bottom: 1rem;
+        left: 1rem;
+        color: #ffffff;
+        font-weight: 850;
+        text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
+      }
+
       #ghl-81tree .form-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -1369,6 +1406,7 @@ html,
         #ghl-81tree .about-grid,
         #ghl-81tree .reviews-wrap,
         #ghl-81tree .contact-grid,
+        #ghl-81tree .contact-showcase,
         #ghl-81tree .page-layout,
         #ghl-81tree .footer-grid {
           grid-template-columns: 1fr;
@@ -1525,6 +1563,12 @@ html,
 
         #ghl-81tree .contact-info-card strong {
           font-size: 1.12rem;
+        }
+
+        #ghl-81tree .contact-showcase figure,
+        #ghl-81tree .contact-showcase figure:first-child {
+          min-height: 230px;
+          grid-row: auto;
         }
 
         #ghl-81tree .disclaimer {
