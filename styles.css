@@ -169,7 +169,7 @@ html,
         position: relative;
         display: inline-flex;
         align-items: center;
-        padding-block: 0.75rem;
+        padding-block: 0.9rem;
       }
 
       #ghl-81tree .nav-trigger {
@@ -189,7 +189,7 @@ html,
 
       #ghl-81tree .nav-dropdown {
         position: absolute;
-        top: calc(100% + 0.2rem);
+        top: calc(100% - 0.1rem);
         left: 50%;
         display: grid;
         width: 260px;
@@ -204,6 +204,15 @@ html,
         pointer-events: none;
         transform: translate(-50%, 0.5rem);
         transition: opacity 0.18s ease, transform 0.18s ease;
+      }
+
+      #ghl-81tree .nav-dropdown::before {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 100%;
+        left: 0;
+        height: 0.9rem;
       }
 
       #ghl-81tree .nav-dropdown-wide {
@@ -252,6 +261,7 @@ html,
       #ghl-81tree .button:hover {
         background: var(--primary-dark);
         border-color: var(--primary-dark);
+        color: #ffffff;
         transform: translateY(-2px);
       }
 
@@ -260,6 +270,12 @@ html,
         border-color: rgba(255, 255, 255, 0.96);
         color: var(--primary-dark);
         box-shadow: none;
+      }
+
+      #ghl-81tree .button-outline:hover {
+        background: var(--primary-dark);
+        border-color: var(--primary-dark);
+        color: #ffffff;
       }
 
       #ghl-81tree .site-header.is-scrolled .button-outline,
@@ -645,14 +661,19 @@ html,
 
       #ghl-81tree .page-content {
         display: grid;
-        gap: 1.15rem;
+        gap: 1.35rem;
       }
 
       #ghl-81tree .page-content h2 {
-        margin: 0.5rem 0 0;
+        margin: 0.5rem 0 1.05rem;
         font-size: clamp(2rem, 4vw, 3.2rem);
         line-height: 1.08;
         font-weight: 850;
+      }
+
+      #ghl-81tree .page-content h2 + p,
+      #ghl-81tree .detail-card h3 + p {
+        margin-top: 0;
       }
 
       #ghl-81tree .page-content h3 {
@@ -676,6 +697,44 @@ html,
 
       #ghl-81tree .detail-card {
         padding: clamp(1.35rem, 3vw, 2rem);
+      }
+
+      #ghl-81tree .guide-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      #ghl-81tree .guide-item {
+        border-radius: 12px;
+        background: var(--muted-bg);
+        padding: 1rem;
+      }
+
+      #ghl-81tree .guide-item h3 {
+        margin-bottom: 0.4rem;
+      }
+
+      #ghl-81tree .guide-item p {
+        margin-bottom: 0;
+      }
+
+      #ghl-81tree .cta-strip {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        border-radius: var(--radius);
+        background: var(--dark);
+        color: #ffffff;
+        padding: clamp(1.25rem, 3vw, 1.8rem);
+      }
+
+      #ghl-81tree .cta-strip p {
+        max-width: 620px;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.78);
       }
 
       #ghl-81tree .detail-list {
@@ -793,6 +852,31 @@ html,
       #ghl-81tree .area-card:hover img {
         opacity: 0.58;
         transform: scale(1.045);
+      }
+
+      #ghl-81tree .review-list {
+        display: grid;
+        gap: 1rem;
+      }
+
+      #ghl-81tree .review-list .review-card {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 1rem;
+        align-items: start;
+      }
+
+      #ghl-81tree .review-avatar {
+        display: inline-flex;
+        width: 3rem;
+        height: 3rem;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: var(--primary-soft);
+        color: var(--primary-dark);
+        font-family: Montserrat, Inter, sans-serif;
+        font-weight: 850;
       }
 
       #ghl-81tree .gallery-grid {
@@ -1215,11 +1299,11 @@ html,
           max-height: calc(100dvh - 8rem);
           overflow: auto;
           border-radius: 0 0 24px 24px;
-          background: rgba(7, 20, 11, 0.9);
+          background: rgba(7, 20, 11, 0.98);
           color: #ffffff;
-          padding: 2.2rem 1.35rem 2.45rem;
+          padding: 2rem 1.35rem 2.3rem;
           text-align: center;
-          box-shadow: 0 28px 50px rgba(7, 20, 11, 0.28);
+          box-shadow: 0 28px 56px rgba(7, 20, 11, 0.44);
           opacity: 0;
           pointer-events: none;
           transform: translateY(-0.75rem);
@@ -1250,7 +1334,7 @@ html,
 
         #ghl-81tree .mobile-sublinks a {
           border-radius: 10px;
-          background: rgba(255, 255, 255, 0.08);
+          background: rgba(255, 255, 255, 0.1);
           color: rgba(255, 255, 255, 0.86);
           padding: 0.55rem;
           font-size: 0.82rem;
@@ -1262,6 +1346,12 @@ html,
           width: min(100%, 33rem);
           margin-inline: auto;
           box-shadow: 0 0 34px rgba(84, 163, 56, 0.34);
+        }
+
+        #ghl-81tree .mobile-nav .button-outline {
+          border-color: rgba(123, 211, 93, 0.95);
+          background: transparent;
+          color: #7bd35d;
         }
 
         #ghl-81tree .site-header.is-open .mobile-nav {
@@ -1324,7 +1414,7 @@ html,
       }
 
         #ghl-81tree .hero {
-          min-height: 92vh;
+          min-height: 88vh;
         }
 
         #ghl-81tree .page-hero {
@@ -1341,22 +1431,27 @@ html,
         }
 
         #ghl-81tree .hero-pill {
-          top: clamp(6.3rem, 12vh, 7.2rem);
-          font-size: 0.64rem;
-          padding: 0.36rem 0.8rem;
+          top: clamp(6.1rem, 11vh, 7rem);
+          white-space: nowrap;
+          font-size: 0.56rem;
+          letter-spacing: 0.12em;
+          padding: 0.34rem 0.72rem;
         }
 
         #ghl-81tree .hero-content {
-          padding-top: 5.5rem;
+          padding-top: 5.15rem;
         }
 
         #ghl-81tree h1 {
-          max-width: 11ch;
-          font-size: clamp(2.65rem, 12vw, 4.4rem);
+          max-width: 12ch;
+          font-size: clamp(2.25rem, 10.4vw, 3.65rem);
+          line-height: 1.02;
         }
 
         #ghl-81tree .hero-copy {
-          font-size: 1.02rem;
+          max-width: 31ch;
+          font-size: 0.95rem;
+          line-height: 1.55;
         }
 
         #ghl-81tree .stats-section {
@@ -1369,17 +1464,18 @@ html,
         }
 
         #ghl-81tree .stat-card {
-          min-height: 7.4rem;
-          gap: 0.45rem;
+          min-height: 6.25rem;
+          gap: 0.35rem;
+          padding: 0.8rem 0.55rem;
         }
 
         #ghl-81tree .stat-card strong {
-          font-size: 2.15rem;
+          font-size: 1.9rem;
         }
 
         #ghl-81tree .stat-card span {
           max-width: 10ch;
-          font-size: 0.58rem;
+          font-size: 0.53rem;
           letter-spacing: 0.11em;
           line-height: 1.25;
         }
@@ -1387,10 +1483,15 @@ html,
         #ghl-81tree .service-grid,
         #ghl-81tree .process-grid,
         #ghl-81tree .review-grid,
+        #ghl-81tree .guide-grid,
         #ghl-81tree .seo-grid,
         #ghl-81tree .area-grid,
         #ghl-81tree .detail-list,
         #ghl-81tree .form-grid {
+          grid-template-columns: 1fr;
+        }
+
+        #ghl-81tree .review-list .review-card {
           grid-template-columns: 1fr;
         }
 
