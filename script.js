@@ -99,11 +99,23 @@
           });
         });
 
+        let hasUserScrolled = window.scrollY > 2;
+
         function animateCount(element) {
-          const target = Number(element.dataset.count || 0);
+          if (element.dataset.countStarted === "true") return;
+          element.dataset.countStarted = "true";
+
+          const rawTarget = element.dataset.count || "0";
+          const target = Number(rawTarget);
           const suffix = element.dataset.suffix || "";
           const decimals = Number(element.dataset.decimals || 0);
           const duration = Number(element.dataset.duration || 1700);
+
+          if (!Number.isFinite(target)) {
+            element.textContent = element.textContent.trim() || rawTarget + suffix;
+            return;
+          }
+
           const start = performance.now();
 
           function frame(now) {
@@ -122,6 +134,12 @@
             entries.forEach(function (entry) {
               if (!entry.isIntersecting) return;
               entry.target.classList.add("is-visible");
+              if (entry.target.classList.contains("stat-card")) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+              }
+              entry.target.querySelectorAll("[data-count]").forEach(animateCount);
+              if (entry.target.matches("[data-count]")) animateCount(entry.target);
               revealObserver.unobserve(entry.target);
             });
           },
@@ -138,24 +156,27 @@
         revealGroups.forEach(function (elements) {
           elements.forEach(function (element, index) {
             element.style.setProperty("--reveal-delay", Math.min(index * 75, 300) + "ms");
+            if (element.classList.contains("stat-card") && !hasUserScrolled) return;
             revealObserver.observe(element);
           });
         });
 
-        const countObserver = new IntersectionObserver(
-          function (entries) {
-            entries.forEach(function (entry) {
-              if (!entry.isIntersecting) return;
-              animateCount(entry.target);
-              countObserver.unobserve(entry.target);
-            });
-          },
-          { threshold: 0.45, rootMargin: "0px 0px -6% 0px" }
-        );
+        const statCards = Array.from(root.querySelectorAll(".stat-card"));
 
-        root.querySelectorAll("[data-count]").forEach(function (element) {
-          countObserver.observe(element);
-        });
+        function enableCounterAnimations() {
+          if (root.classList.contains("has-user-scrolled")) return;
+          hasUserScrolled = true;
+          root.classList.add("has-user-scrolled");
+          statCards.forEach(function (element) {
+            revealObserver.observe(element);
+          });
+        }
+
+        if (hasUserScrolled) {
+          enableCounterAnimations();
+        } else {
+          window.addEventListener("scroll", enableCounterAnimations, { once: true, passive: true });
+        }
 
         const year = root.querySelector("[data-year]");
         if (year) year.textContent = new Date().getFullYear();

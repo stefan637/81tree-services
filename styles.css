@@ -1655,3 +1655,8 @@ html,
           font-size: 0.5rem;
         }
       }
+
+      #ghl-81tree .stat-card.reveal.is-visible {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
