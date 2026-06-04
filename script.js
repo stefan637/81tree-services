@@ -5,7 +5,8 @@
         const header = root.querySelector("[data-header]");
         const menuButton = root.querySelector("[data-menu-button]");
         const mobileNav = root.querySelector("[data-mobile-nav]");
-        const mobileGroups = root.querySelectorAll(".mobile-group");
+        const mobileGroups = root.querySelectorAll("[data-mobile-group]");
+        const mobileGroupTimers = new WeakMap();
 
         if ("scrollRestoration" in history) {
           history.scrollRestoration = "manual";
@@ -21,10 +22,70 @@
           if (!header) return;
           header.classList.remove("is-open");
           root.classList.remove("menu-open");
-          mobileGroups.forEach(function (group) {
-            group.removeAttribute("open");
-          });
+          mobileGroups.forEach(closeMobileGroup);
           if (menuButton) menuButton.setAttribute("aria-label", "Open menu");
+        }
+
+        function closeMobileGroup(group) {
+          const trigger = group.querySelector(".mobile-group-trigger");
+          const links = group.querySelector("[data-mobile-sublinks]");
+          const existingTimer = mobileGroupTimers.get(group);
+          if (existingTimer) window.clearTimeout(existingTimer);
+
+          if (trigger) trigger.setAttribute("aria-expanded", "false");
+          if (links) links.setAttribute("aria-hidden", "true");
+
+          if (!links || !group.classList.contains("is-open")) {
+            group.classList.remove("is-open", "is-closing");
+            if (links) links.style.maxHeight = "0px";
+            return;
+          }
+
+          if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            group.classList.remove("is-open", "is-closing");
+            links.style.maxHeight = "0px";
+            return;
+          }
+
+          const currentHeight = links.scrollHeight;
+          group.classList.add("is-closing");
+          links.style.maxHeight = currentHeight + "px";
+          links.offsetHeight;
+          group.classList.remove("is-open");
+
+          requestAnimationFrame(function () {
+            links.style.maxHeight = "0px";
+          });
+
+          const cleanupTimer = window.setTimeout(function () {
+            group.classList.remove("is-closing");
+            links.style.maxHeight = "0px";
+            mobileGroupTimers.delete(group);
+          }, 480);
+
+          mobileGroupTimers.set(group, cleanupTimer);
+        }
+
+        function openMobileGroup(group) {
+          mobileGroups.forEach(function (otherGroup) {
+            if (otherGroup !== group) closeMobileGroup(otherGroup);
+          });
+
+          const trigger = group.querySelector(".mobile-group-trigger");
+          const links = group.querySelector("[data-mobile-sublinks]");
+          const existingTimer = mobileGroupTimers.get(group);
+          if (existingTimer) window.clearTimeout(existingTimer);
+
+          group.classList.remove("is-closing");
+          if (links) links.style.maxHeight = "0px";
+          group.classList.add("is-open");
+          if (trigger) trigger.setAttribute("aria-expanded", "true");
+          if (links) links.setAttribute("aria-hidden", "false");
+          if (links) {
+            requestAnimationFrame(function () {
+              links.style.maxHeight = links.scrollHeight + "px";
+            });
+          }
         }
 
         function updateHeader() {
@@ -50,11 +111,25 @@
         }
 
         mobileGroups.forEach(function (group) {
-          group.addEventListener("toggle", function () {
-            if (!group.open) return;
-            mobileGroups.forEach(function (otherGroup) {
-              if (otherGroup !== group) otherGroup.removeAttribute("open");
-            });
+          const trigger = group.querySelector(".mobile-group-trigger");
+          if (!trigger) return;
+
+          trigger.addEventListener("click", function () {
+            if (group.classList.contains("is-open")) {
+              closeMobileGroup(group);
+            } else {
+              openMobileGroup(group);
+            }
+          });
+        });
+
+        mobileGroups.forEach(function (group) {
+          const links = group.querySelector("[data-mobile-sublinks]");
+          if (!links) return;
+
+          links.addEventListener("transitionend", function (event) {
+            if (event.propertyName !== "max-height" || !group.classList.contains("is-open")) return;
+            links.style.maxHeight = links.scrollHeight + "px";
           });
         });
 
