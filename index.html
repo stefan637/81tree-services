@@ -14,23 +14,49 @@
     <div id="ghl-81tree">
       <header class="site-header" data-header>
         <div class="container nav-wrap">
-          <a class="brand" href="#home" aria-label="81Tree Services home">
+          <a class="brand" href="/" aria-label="81Tree Services home">
             <img
               class="brand-mark"
               src="assets/logo.png"
               alt="81Tree Services logo"
-            />
-            <span>81Tree Services</span>
+              decoding="async"
+                  loading="lazy"
+                  />
           </a>
 
           <nav class="desktop-nav" aria-label="Primary navigation">
-            <a href="#home">Home</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#services">Services</a>
-            <a href="#about">About Us</a>
-            <a href="#testimonials">Testimonials</a>
+            <a href="/">Home</a>
+            <a href="/#gallery">Gallery</a>
+            <div class="nav-menu">
+              <a class="nav-trigger" href="/services/">Services</a>
+              <div class="nav-dropdown nav-dropdown-wide" aria-label="Service pages">
+                <a href="/services/tree-removal/">Tree Removal</a>
+                <a href="/services/tree-trimming-and-pruning/">Tree Trimming</a>
+                <a href="/services/palm-tree-trimming/">Palm Trimming</a>
+                <a href="/services/stump-grinding/">Stump Grinding</a>
+                <a href="/services/land-clearing/">Land Clearing</a>
+                <a href="/services/emergency-tree-services/">Emergency Tree Services</a>
+                <a href="/services/storm-preparation-and-cleanup/">Storm Prep and Cleanup</a>
+                <a href="/services/tree-debris-hauling/">Debris Hauling</a>
+                <a href="/services/commercial-tree-removal/">Commercial Removal</a>
+                <a href="/services/commercial-tree-trimming/">Commercial Trimming</a>
+              </div>
+            </div>
+            <div class="nav-menu">
+              <a class="nav-trigger" href="/service-areas/">Service Areas</a>
+              <div class="nav-dropdown" aria-label="Service area pages">
+                <a href="/service-areas/tampa-fl/">Tampa, FL</a>
+                <a href="/service-areas/brandon-fl/">Brandon, FL</a>
+                <a href="/service-areas/riverview-fl/">Riverview, FL</a>
+                <a href="/service-areas/apollo-beach-fl/">Apollo Beach, FL</a>
+                <a href="/service-areas/south-tampa-fl/">South Tampa, FL</a>
+                <a href="/service-areas/lutz-fl/">Lutz, FL</a>
+              </div>
+            </div>
+            <a href="/#about">About Us</a>
+            <a href="/#testimonials">Testimonials</a>
             <a class="button button-outline" href="tel:+18139977719">+1 813-997-7719</a>
-            <a class="button" href="#contact">Request Service</a>
+            <a class="button" href="/#contact">Request Service</a>
           </nav>
 
           <button class="menu-button" type="button" data-menu-button aria-label="Open menu">
@@ -41,13 +67,32 @@
         </div>
 
         <nav class="mobile-nav" data-mobile-nav aria-label="Mobile navigation">
-          <a href="#home">Home</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#services">Services</a>
-          <a href="#about">About Us</a>
-          <a href="#testimonials">Testimonials</a>
+          <a href="/">Home</a>
+          <a href="/#gallery">Gallery</a>
+          <div class="mobile-group">
+            <a class="mobile-group-title" href="/services/">Services</a>
+            <div class="mobile-sublinks">
+              <a href="/services/tree-removal/">Tree Removal</a>
+              <a href="/services/tree-trimming-and-pruning/">Tree Trimming</a>
+              <a href="/services/palm-tree-trimming/">Palm Trimming</a>
+              <a href="/services/stump-grinding/">Stump Grinding</a>
+              <a href="/services/land-clearing/">Land Clearing</a>
+              <a href="/services/emergency-tree-services/">Emergency Tree Services</a>
+            </div>
+          </div>
+          <div class="mobile-group">
+            <a class="mobile-group-title" href="/service-areas/">Service Areas</a>
+            <div class="mobile-sublinks">
+              <a href="/service-areas/tampa-fl/">Tampa</a>
+              <a href="/service-areas/brandon-fl/">Brandon</a>
+              <a href="/service-areas/riverview-fl/">Riverview</a>
+              <a href="/service-areas/apollo-beach-fl/">Apollo Beach</a>
+            </div>
+          </div>
+          <a href="/#about">About Us</a>
+          <a href="/#testimonials">Testimonials</a>
           <a class="button button-outline" href="tel:+18139977719">+1 813-997-7719</a>
-          <a class="button" href="#contact">Request Service</a>
+          <a class="button" href="/#contact">Request Service</a>
         </nav>
       </header>
 
@@ -57,7 +102,9 @@
             class="hero-bg"
             src="assets/tree-photo-14.jpg"
             alt="Tree service crew working at a residential property"
-          />
+            fetchpriority="high"
+            decoding="async"
+            />
           <div class="hero-overlay"></div>
           <p class="eyebrow hero-pill">
             <span></span>
@@ -116,7 +163,9 @@
                 <img
                   src="assets/tree-photo-03.jpg"
                   alt="Tree work near a residential property"
-                />
+                  loading="lazy"
+                  decoding="async"
+                  />
                 <div>
                   <span class="card-icon">01</span>
                   <h3>Tree Removal</h3>
@@ -129,6 +178,7 @@
                     <li>Commercial</li>
                     <li>Hazard Trees</li>
                   </ul>
+                  <a class="text-link" href="/services/tree-removal/">Learn More</a>
                 </div>
               </article>
 
@@ -136,7 +186,9 @@
                 <img
                   src="assets/tree-photo-15.jpg"
                   alt="Tree trimming crew using professional equipment"
-                />
+                  loading="lazy"
+                  decoding="async"
+                  />
                 <div>
                   <span class="card-icon">02</span>
                   <h3>Tree Trimming</h3>
@@ -149,6 +201,7 @@
                     <li>Canopy Lift</li>
                     <li>Storm Prep</li>
                   </ul>
+                  <a class="text-link" href="/services/tree-trimming-and-pruning/">Learn More</a>
                 </div>
               </article>
 
@@ -156,7 +209,9 @@
                 <img
                   src="assets/tree-photo-08.jpg"
                   alt="Large tree service job with equipment on site"
-                />
+                  loading="lazy"
+                  decoding="async"
+                  />
                 <div>
                   <span class="card-icon">03</span>
                   <h3>Storm Cleanup</h3>
@@ -169,6 +224,7 @@
                     <li>Debris Hauling</li>
                     <li>Site Safety</li>
                   </ul>
+                  <a class="text-link" href="/services/storm-preparation-and-cleanup/">Learn More</a>
                 </div>
               </article>
 
@@ -176,7 +232,9 @@
                 <img
                   src="assets/tree-photo-02.jpg"
                   alt="Tree debris and cleanup work"
-                />
+                  loading="lazy"
+                  decoding="async"
+                  />
                 <div>
                   <span class="card-icon">04</span>
                   <h3>Stump Grinding</h3>
@@ -189,6 +247,7 @@
                     <li>Roots</li>
                     <li>Yard Recovery</li>
                   </ul>
+                  <a class="text-link" href="/services/stump-grinding/">Learn More</a>
                 </div>
               </article>
 
@@ -196,7 +255,9 @@
                 <img
                   src="assets/tree-photo-13.jpg"
                   alt="Crew clearing branches and tree debris"
-                />
+                  loading="lazy"
+                  decoding="async"
+                  />
                 <div>
                   <span class="card-icon">05</span>
                   <h3>Land Clearing</h3>
@@ -209,6 +270,7 @@
                     <li>Brush</li>
                     <li>Preparation</li>
                   </ul>
+                  <a class="text-link" href="/services/land-clearing/">Learn More</a>
                 </div>
               </article>
 
@@ -216,7 +278,9 @@
                 <img
                   src="assets/tree-photo-12.jpg"
                   alt="Palm tree trimming work"
-                />
+                  loading="lazy"
+                  decoding="async"
+                  />
                 <div>
                   <span class="card-icon">06</span>
                   <h3>Palm Trimming</h3>
@@ -229,6 +293,7 @@
                     <li>Clean Cuts</li>
                     <li>Haul Away</li>
                   </ul>
+                  <a class="text-link" href="/services/palm-tree-trimming/">Learn More</a>
                 </div>
               </article>
 
@@ -236,7 +301,9 @@
                 <img
                   src="assets/tree-photo-11.jpg"
                   alt="Tree service truck and debris hauling"
-                />
+                  loading="lazy"
+                  decoding="async"
+                  />
                 <div>
                   <span class="card-icon">07</span>
                   <h3>Debris Hauling</h3>
@@ -249,6 +316,7 @@
                     <li>Hauling</li>
                     <li>No Mess</li>
                   </ul>
+                  <a class="text-link" href="/services/tree-debris-hauling/">Learn More</a>
                 </div>
               </article>
 
@@ -256,7 +324,9 @@
                 <img
                   src="assets/tree-photo-01.jpg"
                   alt="Commercial tree care and cleanup"
-                />
+                  loading="lazy"
+                  decoding="async"
+                  />
                 <div>
                   <span class="card-icon">08</span>
                   <h3>Commercial Work</h3>
@@ -269,6 +339,7 @@
                     <li>Crews</li>
                     <li>Planning</li>
                   </ul>
+                  <a class="text-link" href="/services/commercial-tree-removal/">Learn More</a>
                 </div>
               </article>
             </div>
@@ -298,35 +369,45 @@
                 <img
                   src="assets/tree-photo-04.jpg"
                   alt="Tree service work photo from Google Business Profile"
-                />
+                  loading="lazy"
+                  decoding="async"
+                  />
                 <span>Residential tree care</span>
               </figure>
               <figure class="gallery-card reveal">
                 <img
                   src="assets/tree-photo-10.jpg"
                   alt="Tree service crew and equipment"
-                />
+                  loading="lazy"
+                  decoding="async"
+                  />
                 <span>Professional equipment</span>
               </figure>
               <figure class="gallery-card reveal">
                 <img
                   src="assets/tree-photo-05.jpg"
                   alt="Tree trimming and cleanup photo from Google Business Profile"
-                />
+                  loading="lazy"
+                  decoding="async"
+                  />
                 <span>Careful trimming</span>
               </figure>
               <figure class="gallery-card reveal">
                 <img
                   src="assets/tree-photo-07.jpg"
                   alt="Tree debris hauling and cleanup"
-                />
+                  loading="lazy"
+                  decoding="async"
+                  />
                 <span>Debris hauling</span>
               </figure>
               <figure class="gallery-card reveal">
                 <img
                   src="assets/tree-photo-06.jpg"
                   alt="Google Business Profile tree care project photo"
-                />
+                  loading="lazy"
+                  decoding="async"
+                  />
                 <span>Clean job sites</span>
               </figure>
             </div>
@@ -339,7 +420,9 @@
               <img
                 src="assets/tree-photo-09.jpg"
                 alt="81Tree Services crew on a residential tree care job"
-              />
+                  loading="lazy"
+                  decoding="async"
+                  />
               <div class="review-badge reveal">
                 <strong>50</strong>
                 <p>five-star Google reviews listed on the public profile.</p>
@@ -575,8 +658,9 @@
                 class="brand-mark"
                 src="assets/logo.png"
                 alt="81Tree Services logo"
+                loading="lazy"
+                decoding="async"
               />
-              <span>81Tree Services</span>
             </div>
             <p>
               Tree removal, trimming, storm cleanup, stump grinding, land clearing, palm trimming,
@@ -592,11 +676,22 @@
             </div>
           </div>
           <div>
+            <h3>Services</h3>
+            <div class="footer-links">
+              <a href="/services/tree-removal/">Tree Removal</a>
+              <a href="/services/tree-trimming-and-pruning/">Tree Trimming</a>
+              <a href="/services/emergency-tree-services/">Emergency Tree Services</a>
+              <a href="/services/stump-grinding/">Stump Grinding</a>
+            </div>
+          </div>
+          <div>
             <h3>Service Areas</h3>
-            <p>
-              Tampa, Brandon, Riverview, Apollo Beach, South Tampa, Lutz, Gibsonton,
-              Land O' Lakes, and nearby Tampa Bay communities.
-            </p>
+            <div class="footer-links">
+              <a href="/service-areas/tampa-fl/">Tampa, FL</a>
+              <a href="/service-areas/brandon-fl/">Brandon, FL</a>
+              <a href="/service-areas/riverview-fl/">Riverview, FL</a>
+              <a href="/service-areas/">All Service Areas</a>
+            </div>
           </div>
         </div>
         <div class="container copyright">

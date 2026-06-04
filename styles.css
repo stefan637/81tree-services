@@ -1,4 +1,10 @@
-﻿#ghl-81tree,
+html,
+      body {
+        margin: 0;
+        background: #f7faf6;
+      }
+
+      #ghl-81tree,
       #ghl-81tree * {
         box-sizing: border-box;
       }
@@ -18,6 +24,7 @@
         --shadow: 0 22px 48px rgba(12, 32, 17, 0.13);
         --radius: 14px;
         margin: 0;
+        min-height: 100vh;
         overflow-x: hidden;
         background: var(--background);
         color: var(--foreground);
@@ -119,33 +126,110 @@
         display: inline-flex;
         align-items: center;
         line-height: 1;
+        flex: 0 0 auto;
       }
 
       #ghl-81tree .brand-mark {
-        width: min(190px, 42vw);
+        width: min(172px, 38vw);
         height: auto;
-        max-height: 4.2rem;
+        max-height: 4rem;
         object-fit: contain;
         border-radius: 0;
         background: transparent;
         padding: 0;
+        transition: filter 0.25s ease, opacity 0.25s ease;
+      }
+
+      #ghl-81tree .site-header:not(.is-scrolled):not(.is-open) .brand-mark {
+        filter: brightness(0) invert(1);
       }
 
       #ghl-81tree .desktop-nav {
         display: flex;
         align-items: center;
-        gap: 1.25rem;
+        gap: 1rem;
         font-weight: 750;
       }
 
       #ghl-81tree .desktop-nav > a:not(.button),
-      #ghl-81tree .mobile-nav > a:not(.button) {
+      #ghl-81tree .desktop-nav .nav-trigger,
+      #ghl-81tree .mobile-nav > a:not(.button),
+      #ghl-81tree .mobile-group-title {
         transition: color 0.2s ease;
       }
 
       #ghl-81tree .desktop-nav > a:not(.button):hover,
-      #ghl-81tree .mobile-nav > a:not(.button):hover {
+      #ghl-81tree .desktop-nav .nav-trigger:hover,
+      #ghl-81tree .mobile-nav > a:not(.button):hover,
+      #ghl-81tree .mobile-group-title:hover {
         color: var(--primary);
+      }
+
+      #ghl-81tree .nav-menu {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        padding-block: 0.75rem;
+      }
+
+      #ghl-81tree .nav-trigger {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+      }
+
+      #ghl-81tree .nav-trigger::after {
+        content: "";
+        width: 0.42rem;
+        height: 0.42rem;
+        border-right: 2px solid currentColor;
+        border-bottom: 2px solid currentColor;
+        transform: translateY(-0.12rem) rotate(45deg);
+      }
+
+      #ghl-81tree .nav-dropdown {
+        position: absolute;
+        top: calc(100% + 0.2rem);
+        left: 50%;
+        display: grid;
+        width: 260px;
+        gap: 0.25rem;
+        border: 1px solid rgba(217, 230, 211, 0.9);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.97);
+        color: var(--foreground);
+        padding: 0.65rem;
+        box-shadow: 0 22px 46px rgba(7, 20, 11, 0.16);
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(-50%, 0.5rem);
+        transition: opacity 0.18s ease, transform 0.18s ease;
+      }
+
+      #ghl-81tree .nav-dropdown-wide {
+        width: 470px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      #ghl-81tree .nav-dropdown a {
+        border-radius: 8px;
+        color: var(--foreground);
+        padding: 0.58rem 0.72rem;
+        font-size: 0.88rem;
+        line-height: 1.2;
+        transition: background 0.18s ease, color 0.18s ease;
+      }
+
+      #ghl-81tree .nav-dropdown a:hover {
+        background: var(--primary-soft);
+        color: var(--primary-dark);
+      }
+
+      #ghl-81tree .nav-menu:hover .nav-dropdown,
+      #ghl-81tree .nav-menu:focus-within .nav-dropdown {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate(-50%, 0);
       }
 
       #ghl-81tree .button {
@@ -246,6 +330,66 @@
         color: #ffffff;
         text-align: center;
         isolation: isolate;
+      }
+
+      #ghl-81tree .page-hero {
+        position: relative;
+        min-height: min(74vh, 680px);
+        display: grid;
+        align-items: center;
+        overflow: hidden;
+        color: #ffffff;
+        isolation: isolate;
+      }
+
+      #ghl-81tree .page-hero .hero-bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -3;
+      }
+
+      #ghl-81tree .page-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        background:
+          linear-gradient(90deg, rgba(7, 20, 11, 0.78), rgba(7, 20, 11, 0.38)),
+          radial-gradient(circle at 28% 46%, rgba(84, 163, 56, 0.22), transparent 36%);
+      }
+
+      #ghl-81tree .page-hero-content {
+        max-width: 780px;
+        padding-top: 7rem;
+      }
+
+      #ghl-81tree .breadcrumbs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin: 0 0 1.1rem;
+        color: rgba(255, 255, 255, 0.72);
+        font-weight: 800;
+      }
+
+      #ghl-81tree .breadcrumbs a {
+        color: rgba(255, 255, 255, 0.94);
+      }
+
+      #ghl-81tree .page-hero h1 {
+        margin-inline: 0;
+        max-width: 760px;
+        font-size: clamp(2.9rem, 6vw, 5.15rem);
+        text-align: left;
+      }
+
+      #ghl-81tree .page-hero p:not(.eyebrow):not(.breadcrumbs) {
+        max-width: 720px;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: clamp(1.05rem, 2vw, 1.24rem);
       }
 
       #ghl-81tree .hero-bg {
@@ -476,6 +620,179 @@
         padding: 0.33rem 0.65rem;
         font-size: 0.78rem;
         font-weight: 800;
+      }
+
+      #ghl-81tree .text-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        margin-top: 1.1rem;
+        color: var(--primary-dark);
+        font-weight: 850;
+      }
+
+      #ghl-81tree .text-link::after {
+        content: ">";
+        transform: translateY(-0.02rem);
+      }
+
+      #ghl-81tree .page-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 360px;
+        gap: 2rem;
+        align-items: start;
+      }
+
+      #ghl-81tree .page-content {
+        display: grid;
+        gap: 1.15rem;
+      }
+
+      #ghl-81tree .page-content h2 {
+        margin: 0.5rem 0 0;
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        line-height: 1.08;
+        font-weight: 850;
+      }
+
+      #ghl-81tree .page-content h3 {
+        margin-bottom: 0.25rem;
+        font-size: 1.35rem;
+      }
+
+      #ghl-81tree .page-content p {
+        color: var(--muted);
+        font-size: 1.04rem;
+      }
+
+      #ghl-81tree .detail-card,
+      #ghl-81tree .sidebar-card,
+      #ghl-81tree .seo-card {
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: #ffffff;
+        box-shadow: 0 16px 36px rgba(16, 33, 22, 0.07);
+      }
+
+      #ghl-81tree .detail-card {
+        padding: clamp(1.35rem, 3vw, 2rem);
+      }
+
+      #ghl-81tree .detail-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.85rem;
+        margin: 1.35rem 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      #ghl-81tree .detail-list li {
+        border-radius: 12px;
+        background: var(--muted-bg);
+        color: var(--foreground);
+        padding: 0.9rem;
+        font-weight: 800;
+      }
+
+      #ghl-81tree .sidebar {
+        position: sticky;
+        top: 7rem;
+        display: grid;
+        gap: 1rem;
+      }
+
+      #ghl-81tree .sidebar-card {
+        padding: 1.25rem;
+      }
+
+      #ghl-81tree .sidebar-card h3 {
+        margin-bottom: 0.55rem;
+      }
+
+      #ghl-81tree .sidebar-links {
+        display: grid;
+        gap: 0.35rem;
+        margin-top: 0.75rem;
+      }
+
+      #ghl-81tree .sidebar-links a {
+        border-radius: 8px;
+        background: var(--muted-bg);
+        color: var(--foreground);
+        padding: 0.62rem 0.72rem;
+        font-weight: 800;
+      }
+
+      #ghl-81tree .seo-grid,
+      #ghl-81tree .area-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      #ghl-81tree .seo-card {
+        display: flex;
+        min-height: 100%;
+        flex-direction: column;
+        padding: 1.25rem;
+      }
+
+      #ghl-81tree .seo-card h3 {
+        margin-bottom: 0.45rem;
+      }
+
+      #ghl-81tree .seo-card p {
+        color: var(--muted);
+      }
+
+      #ghl-81tree .seo-card .text-link {
+        margin-top: auto;
+      }
+
+      #ghl-81tree .area-card {
+        display: grid;
+        min-height: 210px;
+        overflow: hidden;
+        border-radius: var(--radius);
+        background: var(--dark);
+        color: #ffffff;
+        box-shadow: 0 16px 36px rgba(16, 33, 22, 0.1);
+      }
+
+      #ghl-81tree .area-card img,
+      #ghl-81tree .area-card > div {
+        grid-area: 1 / 1;
+      }
+
+      #ghl-81tree .area-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.42;
+        transition: transform 0.36s ease, opacity 0.36s ease;
+      }
+
+      #ghl-81tree .area-card > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 1.2rem;
+        background: linear-gradient(180deg, transparent 30%, rgba(7, 20, 11, 0.86));
+      }
+
+      #ghl-81tree .area-card h3 {
+        margin-bottom: 0.25rem;
+      }
+
+      #ghl-81tree .area-card p {
+        margin-bottom: 0;
+        color: rgba(255, 255, 255, 0.78);
+      }
+
+      #ghl-81tree .area-card:hover img {
+        opacity: 0.58;
+        transform: scale(1.045);
       }
 
       #ghl-81tree .gallery-grid {
@@ -806,7 +1123,7 @@
 
       #ghl-81tree .footer-grid {
         display: grid;
-        grid-template-columns: 1.1fr 0.8fr 0.8fr;
+        grid-template-columns: 1.2fr 0.8fr 0.8fr 0.8fr;
         gap: 2rem;
       }
 
@@ -821,7 +1138,11 @@
         color: rgba(255, 255, 255, 0.76);
       }
 
-      #ghl-81tree .footer-brand .brand-mark { width: min(230px, 72vw); max-height: none; filter: invert(1); }
+      #ghl-81tree .footer-brand .brand-mark {
+        width: min(220px, 72vw);
+        max-height: none;
+        filter: brightness(0) invert(1);
+      }
 
       #ghl-81tree .site-footer h3 {
         color: #ffffff;
@@ -891,7 +1212,8 @@
           display: grid;
           grid-template-columns: 1fr;
           gap: 1.25rem;
-          overflow: visible;
+          max-height: calc(100dvh - 8rem);
+          overflow: auto;
           border-radius: 0 0 24px 24px;
           background: rgba(7, 20, 11, 0.9);
           color: #ffffff;
@@ -907,6 +1229,33 @@
         #ghl-81tree .mobile-nav > a:not(.button) {
           font-size: 1.32rem;
           font-weight: 850;
+        }
+
+        #ghl-81tree .mobile-group {
+          display: grid;
+          gap: 0.75rem;
+        }
+
+        #ghl-81tree .mobile-group-title {
+          color: #ffffff;
+          font-size: 1.32rem;
+          font-weight: 850;
+        }
+
+        #ghl-81tree .mobile-sublinks {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 0.45rem;
+        }
+
+        #ghl-81tree .mobile-sublinks a {
+          border-radius: 10px;
+          background: rgba(255, 255, 255, 0.08);
+          color: rgba(255, 255, 255, 0.86);
+          padding: 0.55rem;
+          font-size: 0.82rem;
+          font-weight: 800;
+          line-height: 1.2;
         }
 
         #ghl-81tree .mobile-nav .button {
@@ -930,12 +1279,22 @@
         #ghl-81tree .about-grid,
         #ghl-81tree .reviews-wrap,
         #ghl-81tree .contact-grid,
+        #ghl-81tree .page-layout,
         #ghl-81tree .footer-grid {
           grid-template-columns: 1fr;
         }
 
         #ghl-81tree .rating-panel {
           position: static;
+        }
+
+        #ghl-81tree .sidebar {
+          position: static;
+        }
+
+        #ghl-81tree .seo-grid,
+        #ghl-81tree .area-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
       }
 
@@ -955,7 +1314,7 @@
       }
 
         #ghl-81tree .brand-mark {
-        width: min(190px, 42vw);
+        width: min(150px, 42vw);
         height: auto;
         max-height: 4.2rem;
         object-fit: contain;
@@ -966,6 +1325,19 @@
 
         #ghl-81tree .hero {
           min-height: 92vh;
+        }
+
+        #ghl-81tree .page-hero {
+          min-height: 66vh;
+        }
+
+        #ghl-81tree .page-hero-content {
+          padding-top: 6.6rem;
+        }
+
+        #ghl-81tree .page-hero h1 {
+          max-width: 11ch;
+          font-size: clamp(2.55rem, 11vw, 4rem);
         }
 
         #ghl-81tree .hero-pill {
@@ -1015,6 +1387,9 @@
         #ghl-81tree .service-grid,
         #ghl-81tree .process-grid,
         #ghl-81tree .review-grid,
+        #ghl-81tree .seo-grid,
+        #ghl-81tree .area-grid,
+        #ghl-81tree .detail-list,
         #ghl-81tree .form-grid {
           grid-template-columns: 1fr;
         }
