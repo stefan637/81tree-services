@@ -5,6 +5,7 @@
         const header = root.querySelector("[data-header]");
         const menuButton = root.querySelector("[data-menu-button]");
         const mobileNav = root.querySelector("[data-mobile-nav]");
+        const mobileGroups = root.querySelectorAll(".mobile-group");
 
         if ("scrollRestoration" in history) {
           history.scrollRestoration = "manual";
@@ -20,6 +21,9 @@
           if (!header) return;
           header.classList.remove("is-open");
           root.classList.remove("menu-open");
+          mobileGroups.forEach(function (group) {
+            group.removeAttribute("open");
+          });
           if (menuButton) menuButton.setAttribute("aria-label", "Open menu");
         }
 
@@ -44,6 +48,15 @@
             if (event.target && event.target.matches("a")) closeMenu();
           });
         }
+
+        mobileGroups.forEach(function (group) {
+          group.addEventListener("toggle", function () {
+            if (!group.open) return;
+            mobileGroups.forEach(function (otherGroup) {
+              if (otherGroup !== group) otherGroup.removeAttribute("open");
+            });
+          });
+        });
 
         window.addEventListener("keydown", function (event) {
           if (event.key === "Escape" && header && header.classList.contains("is-open")) closeMenu();
