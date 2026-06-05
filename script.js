@@ -22,7 +22,10 @@
           header.classList.remove("is-open");
           root.classList.remove("menu-open");
           mobileGroups.forEach(closeMobileGroup);
-          if (menuButton) menuButton.setAttribute("aria-label", "Open menu");
+          if (menuButton) {
+            menuButton.setAttribute("aria-label", "Open menu");
+            menuButton.setAttribute("aria-expanded", "false");
+          }
         }
 
         function closeMobileGroup(group) {
@@ -58,7 +61,9 @@
           menuButton.addEventListener("click", function () {
             const isOpen = header.classList.toggle("is-open");
             menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+            menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
             root.classList.toggle("menu-open", isOpen);
+            if (!isOpen) mobileGroups.forEach(closeMobileGroup);
           });
         }
 

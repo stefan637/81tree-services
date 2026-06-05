@@ -89,7 +89,7 @@ html,
         background: rgba(7, 20, 11, 0.04);
         backdrop-filter: blur(0);
         -webkit-backdrop-filter: blur(0);
-        transition: opacity 0.2s ease, backdrop-filter 0.2s ease, background 0.2s ease;
+        transition: opacity 0.34s ease, backdrop-filter 0.34s ease, background 0.34s ease;
       }
 
       @supports (height: 100dvh) {
@@ -296,6 +296,7 @@ html,
         color: inherit;
         cursor: pointer;
         position: relative;
+        transition: background 0.24s ease, transform 0.24s ease;
       }
 
       #ghl-81tree .menu-button span {
@@ -304,7 +305,7 @@ html,
         height: 2px;
         border-radius: 999px;
         background: currentColor;
-        transition: transform 0.22s ease, opacity 0.22s ease;
+        transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.18s ease;
       }
 
       #ghl-81tree .menu-button span:nth-child(1) {
@@ -1340,6 +1341,11 @@ html,
           filter: brightness(0) invert(1);
         }
 
+        #ghl-81tree .site-header.is-open .menu-button {
+          background: rgba(255, 255, 255, 0.13);
+          transform: scale(1.02);
+        }
+
         #ghl-81tree .mobile-nav {
           position: absolute;
           top: 100%;
@@ -1360,8 +1366,38 @@ html,
           box-shadow: 0 24px 52px rgba(7, 20, 11, 0.34);
           opacity: 0;
           pointer-events: none;
-          transform: translateY(-0.35rem);
-          transition: opacity 0.2s ease, transform 0.2s ease;
+          clip-path: inset(0 0 100% 0 round 0 0 22px 22px);
+          transform: translateY(-0.75rem) scaleY(0.985);
+          transform-origin: top center;
+          will-change: opacity, transform, clip-path;
+          transition:
+            clip-path 0.44s cubic-bezier(0.22, 1, 0.36, 1),
+            opacity 0.24s ease,
+            transform 0.44s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        #ghl-81tree .mobile-nav > * {
+          opacity: 0;
+          transform: translateY(-0.55rem) scale(0.985);
+          transition:
+            opacity 0.26s ease,
+            transform 0.36s cubic-bezier(0.22, 1, 0.36, 1);
+          transition-delay: 0ms;
+        }
+
+        #ghl-81tree .site-header.is-open .mobile-nav > * {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+
+        #ghl-81tree .site-header.is-open .mobile-nav > :nth-child(1) { transition-delay: 45ms; }
+        #ghl-81tree .site-header.is-open .mobile-nav > :nth-child(2) { transition-delay: 75ms; }
+        #ghl-81tree .site-header.is-open .mobile-nav > :nth-child(3) { transition-delay: 105ms; }
+        #ghl-81tree .site-header.is-open .mobile-nav > :nth-child(4) { transition-delay: 135ms; }
+        #ghl-81tree .site-header.is-open .mobile-nav > :nth-child(5) { transition-delay: 165ms; }
+        #ghl-81tree .site-header.is-open .mobile-nav > :nth-child(6) { transition-delay: 195ms; }
+        #ghl-81tree .site-header.is-open .mobile-nav > :nth-child(7) { transition-delay: 225ms; }
+        #ghl-81tree .site-header.is-open .mobile-nav > :nth-child(8) { transition-delay: 255ms; }
         }
 
         #ghl-81tree .mobile-nav > a:not(.button) {
@@ -1409,7 +1445,7 @@ html,
           border-right: 2px solid currentColor;
           border-bottom: 2px solid currentColor;
           transform: translateY(-0.12rem) rotate(45deg);
-          transition: transform 0.24s ease;
+          transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         #ghl-81tree .mobile-group.is-open .mobile-group-trigger::after {
@@ -1422,8 +1458,11 @@ html,
           opacity: 0;
           overflow: hidden;
           pointer-events: none;
-          transform: translateY(-0.35rem);
-          transition: grid-template-rows 0.42s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.26s ease, transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+          transform: translateY(-0.45rem);
+          transition:
+            grid-template-rows 0.38s cubic-bezier(0.2, 0.8, 0.2, 1),
+            opacity 0.24s ease,
+            transform 0.38s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         #ghl-81tree .mobile-group.is-open .mobile-sublinks {
@@ -1440,7 +1479,7 @@ html,
           min-height: 0;
           overflow: hidden;
           padding-top: 0;
-          transition: padding-top 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+          transition: padding-top 0.38s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         #ghl-81tree .mobile-group.is-open .mobile-sublinks-inner {
@@ -1474,6 +1513,7 @@ html,
         #ghl-81tree .site-header.is-open .mobile-nav {
           opacity: 1;
           pointer-events: auto;
+          clip-path: inset(0 0 0 0 round 0 0 22px 22px);
           transform: translateY(0);
         }
 
